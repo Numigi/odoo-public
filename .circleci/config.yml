@@ -6,5 +6,9 @@ jobs:
        - checkout
 
        - run:
+          name: Build -- Init Database
+          command: docker-compose run --rm odoo odoo --stop-after-init -i base
+
+       - run:
           name: Run Tests
           command: docker-compose run --rm odoo run_test.sh
