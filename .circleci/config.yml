@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+       - checkout
+
+       - run:
+           name: build
+           command: docker-compose build odoo
+
+       - run:
+          name: Run Tests
+          command: docker-compose run --rm odoo run_test.sh
