@@ -6,7 +6,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - odoo-web-data:/var/lib/odoo
-      - ./log:/var/log/odoo
       # Inject the addons as a volume as the addons are just here to test the setup for the next step in the
       # docker pipeline.
       - ./test_addons:/mnt/extra-addons
@@ -14,8 +13,6 @@ services:
       - "127.0.0.1:8069:8069"
     depends_on:
       - db
-    environment:
-      - LOG_ODOO=/var/log/odoo
     command: odoo
   db:
     image: postgres:9.6
