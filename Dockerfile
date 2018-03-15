@@ -18,10 +18,11 @@ RUN pip3 install pip==9.0.1 wheel==0.30.0
 # Extension of the initial entrypoint to add a waiter to the postgres database.
 COPY docker_files/extended_entrypoint.sh \
     docker_files/requirements.txt \
+    docker_files/run_test.sh \
     gitoo.yaml \
     /
 
-RUN chmod +x /extended_entrypoint.sh
+RUN chmod +x /extended_entrypoint.sh /run_test.sh
 ENTRYPOINT ["/extended_entrypoint.sh"]
 RUN pip3 install -r /requirements.txt && rm /requirements.txt
 
