@@ -22,7 +22,8 @@ COPY docker_files/extended_entrypoint.sh \
     gitoo.yaml \
     /
 
-RUN chmod +x /extended_entrypoint.sh /run_test.sh
+COPY ./docker_files/run_test.sh /usr/local/bin/
+RUN chmod +x /extended_entrypoint.sh /usr/local/bin/run_test.sh
 ENTRYPOINT ["/extended_entrypoint.sh"]
 RUN pip3 install -r /requirements.txt && rm /requirements.txt
 
