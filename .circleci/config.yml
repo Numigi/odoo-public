@@ -6,5 +6,9 @@ jobs:
        - checkout
 
        - run:
+           name: build
+           command: docker-compose build odoo
+
+       - run:
           name: Run Tests
           command: docker-compose run --rm odoo run_test.sh
