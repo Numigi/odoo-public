@@ -24,12 +24,12 @@ COPY docker_files/extended_entrypoint.sh \
 
 COPY ./docker_files/run_test.sh /usr/local/bin/
 RUN chmod +x /extended_entrypoint.sh /usr/local/bin/run_test.sh
-ENTRYPOINT ["/extended_entrypoint.sh"]
 RUN pip3 install -r /requirements.txt && rm /requirements.txt
 
 # Install of odoo itself
 RUN gitoo install_all --conf_file /gitoo.yaml --destination /usr/lib/python3/dist-packages/odoo
 
 CMD ["odoo"]
+ENTRYPOINT ["/extended_entrypoint.sh"]
 EXPOSE 8069 8071
 USER odoo
