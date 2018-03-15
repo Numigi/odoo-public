@@ -1,0 +1,2 @@
+git+https://59689348325595d68b5d59d98d3332e0c59f1441@github.com/numigi/gitoo
+num2words==0.5.6
