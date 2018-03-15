@@ -28,9 +28,6 @@ RUN pip3 install -r /requirements.txt && rm /requirements.txt
 # Install of odoo itself
 RUN gitoo install_all --conf_file /gitoo.yaml --destination /usr/lib/python3/dist-packages/odoo
 
-# Config files
-COPY odoo.conf /etc/odoo/
-
 CMD ["odoo"]
 EXPOSE 8069 8071
 USER odoo
