@@ -1,0 +1,27 @@
+- url: https://github.com/odoo/odoo
+  branch: "10.0"
+  commit: c2b3ad1899c0ace340fac4d6e3794a82f337a3b7
+  base: True
+  patches:
+    # cherry-pick a8994b40754834b62038fcc0540cad766ac9e278
+    # Fix partner aged balance
+    # Commited by Odoo in 11.0 but not backported to 10.0
+    - url: https://github.com/ddufresne/odoo
+      branch: 10.0-ddufresne-fix_aged_partner_balance
+      commit: 97929246ca0c7df24b4d46adc27d440712687b5a
+
+    # Fix partner ledger reconcilation
+    # Fix refused by Odoo
+    # The Odoo team prefer duplicating the debit/credit logic at 1000 in the system.
+    - url: https://github.com/ddufresne/odoo
+      branch: 10.0-ddufresne-fix_account_move_line
+      commit: 8bca051a113655f6acfbec13e720c4ff6dee6485
+
+    # Use commercial partner on invoice payment
+    # Fix refused by Odoo
+    # The Odoo team decided to change the domain filter on the bank account field.
+    - url: https://github.com/ddufresne/odoo
+      branch: 10.0-ddufresne-fix_invoice_payment
+      commit: 909007622abac1f895ea29b73a247e1982f165d7
+
+
