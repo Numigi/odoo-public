@@ -6,9 +6,27 @@ jobs:
        - checkout
 
        - run:
-           name: build
-           command: docker-compose build odoo
+          name: Setup Log Folder For Reports
+          command: sudo mkdir -p ./log && sudo chmod 777 ./log
+
+       - run:
+          name: Build -- Init Database
+          command: docker-compose run --rm odoo odoo --stop-after-init -i main
+
+
+       - run:
+          name: Run our tests
+          command: docker-compose run --rm odoo run_pytest.sh
 
        - run:
           name: Run Tests
           command: docker-compose run --rm odoo run_test.sh
+
+       - run:
+          name: Codacy Coverage
+          command: |
+            pip install codacy-coverage==1.3.10
+            python-codacy-coverage -r ./log/coverage.xml
+
+       - store_test_results:
+          path: ./log

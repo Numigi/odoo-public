@@ -1,1 +1,5 @@
 git+https://59689348325595d68b5d59d98d3332e0c59f1441@github.com/numigi/gitoo
+pytest-cov==2.5.1
+pytest-odoo==0.4.0
+ipdb==0.8.1
+num2words==0.5.6
