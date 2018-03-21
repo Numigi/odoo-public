@@ -1,6 +1,6 @@
 - url: https://github.com/odoo/odoo
   branch: "10.0"
-  commit: 1ad8867deea179e3548f8f7619fd1bd11d1446ae
+  commit: c2b3ad1899c0ace340fac4d6e3794a82f337a3b7
   base: True
   patches:
     # cherry-pick a8994b40754834b62038fcc0540cad766ac9e278
