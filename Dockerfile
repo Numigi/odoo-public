@@ -21,7 +21,8 @@ COPY docker_files/extended_entrypoint.sh \
 
 RUN pip install -r /requirements.txt && rm /requirements.txt
 
-RUN gitoo install_all --conf_file /gitoo.yaml --destination "${THIRD_PARTY_ADDONS}"
+ENV ODOO_DIR /usr/lib/python2.7/dist-packages
+RUN gitoo install_all --conf_file /gitoo.yaml --destination "${ODOO_DIR}"
 
 # Files to run the tests
 # run_test to run the tests using odoo only
