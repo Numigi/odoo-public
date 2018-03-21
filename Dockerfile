@@ -33,6 +33,10 @@ ENV OPENERP_SERVER "${ODOO_RC}"
 # Configuration of the coverage report
 COPY ./.coveragerc .
 
+# Folder where should be downloaded third part
+ENV THIRD_PARTY_ADDONS /mnt/third-party-addons
+RUN mkdir -p "${THIRD_PARTY_ADDONS}" && chown -R odoo "${THIRD_PARTY_ADDONS}"
+
 RUN chmod +x /extended_entrypoint.sh
 ENTRYPOINT ["/extended_entrypoint.sh"]
 CMD ["odoo"]
