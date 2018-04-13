@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git config --global user.email "root@localhost" && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip install --upgrade setuptools && \
+RUN pip install --upgrade setuptools==39.0.1 && \
     pip install pip==9.0.1 wheel==0.30.0
 
 COPY docker_files/extended_entrypoint.sh \
