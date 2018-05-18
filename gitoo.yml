@@ -1,4 +1,4 @@
 - url: https://github.com/odoo/odoo
   branch: "11.0"
-  commit: 32e7dfe0c4f33cdd76ed186500b5982ca3d3fb48
+  commit: 4e71bd5caf741b8b45b037fc8b4222927801ff18
   base: true
