@@ -2,3 +2,8 @@
   branch: "11.0"
   commit: 4e71bd5caf741b8b45b037fc8b4222927801ff18
   base: true
+  patches:
+    # Enable 2 configurations files in Odoo (one generic and one specific)
+    - url: https://github.com/numigi/odoo
+      branch: 11.0-specific_odoo_rc
+      commit: e6c98e0ef50fcdb69ea1c6fdb5478f33edf71636
