@@ -1,4 +1,4 @@
-- url: https://github.com/odoo/odoo
+- url: https://github.com/Numigi/odoo
   branch: "11.0"
-  commit: 4e71bd5caf741b8b45b037fc8b4222927801ff18
+  commit: d80d99fc7860974a169bc5cc40df3a705295ba55
   base: true
