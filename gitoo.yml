@@ -1,4 +1,4 @@
 - url: https://github.com/Numigi/odoo
   branch: "11.0"
-  commit: 38028ebf2671c988e2e0c1f6d07b60ddc406ef58
+  commit: bec08f8df295dcd1203361290bc3eaa4787c8ac4
   base: true
