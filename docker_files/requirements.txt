@@ -1,6 +1,6 @@
 gitoo==1.0
-pytest-cov==2.5.1
-git+https://github.com/numigi/pytest-odoo@no_duplicate_module_loading
+pytest-cov==2.6.0
+pytest-odoo==0.4.4
 
 ipdb==0.8.1
 num2words==0.5.6
