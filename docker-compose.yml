@@ -13,6 +13,7 @@ services:
       - ./odoo.conf:/etc/odoo/odoo.conf
     ports:
       - "127.0.0.1:8069:8069"
+      - "127.0.0.1:8071:8071"
     environment:
       - LOG_ODOO=/var/log/odoo
     depends_on:
