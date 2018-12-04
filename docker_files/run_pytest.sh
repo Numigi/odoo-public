@@ -6,6 +6,7 @@ cd $LOG_DIR
 
 pytest $TEST_DIR \
     -v \
+    --disable-warnings \
     --cov \
     --cov-branch \
     --cov-config /.coveragerc \
