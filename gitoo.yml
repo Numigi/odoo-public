@@ -2,3 +2,7 @@
   branch: "11.0"
   commit: 325ba97207ba0a4920d8f556e0b0d70ec6f834c6
   base: true
+  patches:
+    - url: https://github.com/Numigi/odoo
+      branch: 11.0-delivery_demo_data_code_uniqueness
+      commit: 47f4dde30836550c0073052b9f834cbb78fa41d9
