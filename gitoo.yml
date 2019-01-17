@@ -3,4 +3,4 @@
   commit: 3ad5748cefc6f2481b6f5f6518bbf34f11bf36e3
   base: true
   patches:
-    file: patches/enable-specific-conf.patch
+    - file: patches/enable-specific-conf.patch
