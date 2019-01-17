@@ -33,6 +33,8 @@ ENV OPENERP_SERVER "${ODOO_RC}"
 # Configuration of the coverage report
 COPY ./.coveragerc .
 
+COPY docker_files/odoo.conf docker_files/odoo_specific.conf /etc/odoo/
+
 RUN chmod +x /extended_entrypoint.sh
 ENTRYPOINT ["/extended_entrypoint.sh"]
 CMD ["odoo"]

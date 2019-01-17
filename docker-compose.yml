@@ -16,6 +16,7 @@ services:
       - "127.0.0.1:8071:8071"
     environment:
       - LOG_ODOO=/var/log/odoo
+      - SPECIFIC_ODOO_RC=/etc/odoo/odoo_specific.conf
     depends_on:
       - db
     command: odoo
