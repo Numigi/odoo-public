@@ -18,6 +18,7 @@ COPY docker_files/extended_entrypoint.sh \
     docker_files/requirements.txt \
     gitoo.yml \
     /
+COPY patches patches
 
 RUN pip3 install -r /requirements.txt && rm /requirements.txt
 
