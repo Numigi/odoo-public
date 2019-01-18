@@ -1,5 +1,6 @@
-- url: https://github.com/Numigi/odoo
+- url: https://github.com/odoo/odoo
   branch: "11.0"
-  commit: b93ccedd801922de1f7d57d23339612040fab063
+  commit: 0c2e168f8e8e306de2703fdda473417baee56dc3
   base: true
-  
+  patches:
+    - file: patches/enable-specific-conf.patch
