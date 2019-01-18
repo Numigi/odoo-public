@@ -32,10 +32,6 @@ jobs:
           command: docker-compose run --rm odoo run_pytest.sh
 
        - run:
-          name: Run Tests
-          command: docker-compose run --rm odoo run_test.sh
-
-       - run:
           name: Codacy Coverage
           command: |
             pip install codacy-coverage==1.3.10
