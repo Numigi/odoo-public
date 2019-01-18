@@ -10,7 +10,6 @@ services:
       # Inject the addons as a volume as the addons are just here to test the setup for the next step in the
       # docker pipeline.
       - ./test_addons:/mnt/extra-addons
-      - ./odoo.conf:/etc/odoo/odoo.conf
     ports:
       - "8069:8069"
       - "8071:8071"
