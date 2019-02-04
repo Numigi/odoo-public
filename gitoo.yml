@@ -1,6 +1,6 @@
 - url: https://github.com/odoo/odoo
   branch: "11.0"
-  commit: 0c2e168f8e8e306de2703fdda473417baee56dc3
+  commit: 262e00108631680a30e416c7bd6fc1d2c23d8e8f
   base: true
   patches:
     - file: patches/enable-specific-conf.patch
