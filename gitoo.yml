@@ -4,3 +4,8 @@
   base: true
   patches:
     - file: patches/enable-specific-conf.patch
+
+    # PR: https://github.com/odoo/odoo/pull/35028
+    - url: https://github.com/numigi/odoo
+      branch: 12.0-fix_google_drive_config
+      commit: fb3660aa653ba1cf49d505df629642ad15b6d54e
