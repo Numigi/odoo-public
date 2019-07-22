@@ -1,6 +1,6 @@
 - url: https://github.com/odoo/odoo
   branch: "12.0"
-  commit: e6225eeb12be27bb15c781ed6d7998ecee2d13a6
+  commit: b6e7af37eb93e08f3bf049bd6eb0c52c13e7b4e8
   base: true
   patches:
     - file: patches/enable-specific-conf.patch
@@ -9,3 +9,8 @@
     - url: https://github.com/numigi/odoo
       branch: 12.0-fix_google_drive_config
       commit: fb3660aa653ba1cf49d505df629642ad15b6d54e
+
+    # PR: https://github.com/odoo/odoo/pull/35078
+    - url: https://github.com/numigi/odoo
+      branch: 12.0-fix_pivot_view_strings
+      commit: 13207e6a41e659951cb797de8398f854a1b6bd82
