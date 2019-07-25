@@ -8,9 +8,9 @@
     # PR: https://github.com/odoo/odoo/pull/35028
     - url: https://github.com/numigi/odoo
       branch: 12.0-fix_google_drive_config
-      commit: fb3660aa653ba1cf49d505df629642ad15b6d54e
+      commit: 02679cbc667d2da28e0ea22323cd450177517bfe
 
     # PR: https://github.com/odoo/odoo/pull/35078
     - url: https://github.com/numigi/odoo
       branch: 12.0-fix_pivot_view_strings
-      commit: 13207e6a41e659951cb797de8398f854a1b6bd82
+      commit: fb11493d9a7f34e1fb155899271666eb54a8708e
