@@ -9,3 +9,8 @@
     - url: https://github.com/numigi/odoo
       branch: 12.0-fix_pivot_view_strings
       commit: fb11493d9a7f34e1fb155899271666eb54a8708e
+
+    # PR: https://github.com/odoo/odoo/pull/35388
+    - url: https://github.com/numigi/odoo
+      branch: 12.0-fix_timesheet_menu_groups
+      commit: c244bd91f67a186e561e1d09a6b8da6f7c434d42
