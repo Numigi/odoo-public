@@ -1,6 +1,6 @@
 - url: https://github.com/odoo/odoo
   branch: "12.0"
-  commit: 1b8acd57f019d4e34eac72d34a8c6ff62731d836
+  commit: 3050100eeaaede6aa4a6f17fd9e7ae04cccd9090
   base: true
   patches:
     - file: patches/enable-specific-conf.patch
@@ -9,3 +9,8 @@
     - url: https://github.com/numigi/odoo
       branch: 12.0-fix_pivot_view_strings
       commit: fb11493d9a7f34e1fb155899271666eb54a8708e
+
+    # PR: https://github.com/odoo/odoo/pull/41663
+    - url: https://github.com/numigi/odoo
+      branch: 12.0-fix-stock-inventory-title
+      commit: c66c510842efc4c8d9447f5b929926b39831a37a
