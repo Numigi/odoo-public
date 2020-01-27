@@ -17,6 +17,7 @@ RUN pip3 install pip==18.0 wheel==0.32.1
 COPY docker_files/extended_entrypoint.sh \
     docker_files/requirements.txt \
     gitoo.yml \
+    gitoo-addons.yml \
     /
 COPY patches patches
 
@@ -24,6 +25,7 @@ RUN pip3 install -r /requirements.txt && rm /requirements.txt
 
 ENV ODOO_DIR /usr/lib/python3/dist-packages/
 RUN gitoo install-all --conf_file /gitoo.yml --destination "${ODOO_DIR}"
+RUN gitoo install-all --conf_file /gitoo-addons.yml --destination "${ODOO_DIR}/odoo/addons"
 
 # Files to run the tests
 # run_pytest to run the test with pytest-odoo
