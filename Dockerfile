@@ -17,6 +17,7 @@ RUN pip3 install pip==18.0 wheel==0.32.1
 COPY docker_files/extended_entrypoint.sh \
     docker_files/requirements.txt \
     gitoo.yml \
+    gitoo-addons.yml \
     /
 COPY patches patches
 
