@@ -18,4 +18,10 @@ if [[ "${wait_for_db_host}" = true ]] ; then
     done
 fi
 
-exec /entrypoint.sh "$@"
+case "$1" in
+    -- | -*)
+        exec odoo "$@"
+        ;;
+    *)
+        exec "$@"
+esac
