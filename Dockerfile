@@ -14,14 +14,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN pip3 install pip==18.0 wheel==0.32.1
 
-COPY docker_files/extended_entrypoint.sh \
-    docker_files/requirements.txt \
-    gitoo.yml \
-    gitoo-addons.yml \
-    /
-COPY patches patches
-
+COPY docker_files/requirements.txt /
 RUN pip3 install -r /requirements.txt && rm /requirements.txt
+
+COPY gitoo.yml gitoo-addons.yml /
+COPY patches patches
 
 ENV ODOO_DIR /usr/lib/python3/dist-packages/
 RUN gitoo install-all --conf_file /gitoo.yml --destination "${ODOO_DIR}"
@@ -38,8 +35,9 @@ COPY ./.coveragerc .
 
 COPY docker_files/odoo.conf docker_files/odoo_specific.conf /etc/odoo/
 
-RUN chmod +x /extended_entrypoint.sh
-ENTRYPOINT ["/extended_entrypoint.sh"]
+COPY docker_files/entrypoint.sh /
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["odoo"]
 EXPOSE 8069 8071
 USER odoo
