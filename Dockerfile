@@ -37,7 +37,7 @@ RUN set -x; \
         && gpgconf --kill all \
         && rm -rf "$GNUPGHOME" \
         && apt-get update  \
-        && apt-get install --no-install-recommends -y postgresql-client=12.2-1.pgdg90+1 \
+        && apt-get install --no-install-recommends -y postgresql-client-9.6.17 \
         && rm -rf /var/lib/apt/lists/*
 
 RUN git config --global user.name "Odoo" && \
