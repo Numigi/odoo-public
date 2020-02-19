@@ -53,7 +53,7 @@ jobs:
       - checkout
       - run:
           <<: *quay_io_login
-       - run:
+      - run:
           <<: *gitoo_install
       - run:
           name: Set DOCKER_IMAGE_NAME env variable to odoo-base-community
