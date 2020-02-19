@@ -10,6 +10,7 @@ services:
       # Inject the addons as a volume as the addons are just here to test the setup for the next step in the
       # docker pipeline.
       - ./test_addons:/mnt/extra-addons
+      - ./docker_files/odoo_specific.conf:/etc/odoo/odoo_specific.conf
     ports:
       - "8069:8069"
       - "8071:8071"
@@ -29,6 +30,12 @@ services:
       - odoo-db-data:/var/lib/postgresql/data/pgdata
     expose:
       - 5432
+  gitoo:
+    image: quay.io/numigi/gitoo:1.5
+    volumes:
+      - .odoo-source-code:/mnt/odoo
+      - ./gitoo.yml:/gitoo.yml
+      - ./patches:/patches
 volumes:
   odoo-web-data:
   odoo-db-data:
