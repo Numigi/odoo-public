@@ -71,7 +71,11 @@ jobs:
             curl -L $NWS_BIN_LOCATION > ./nws
             chmod +x ./nws
       - run:
-          name: Set tag
+          name: Set tag (odoo-public)
+          command: |
+            ./nws circleci create-tag
+      - run:
+          name: Set tag (odoo-base)
           command: |
             ./nws circleci create-tag -t odoo-base
 
@@ -100,5 +104,3 @@ workflows:
           filters:
             branches:
               only: /^1\d\.0/
-
-
