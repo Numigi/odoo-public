@@ -78,7 +78,6 @@ CMD ["odoo"]
 EXPOSE 8069 8071
 
 ENV ODOO_DIR /usr/lib/python3/dist-packages/
-RUN ls ${ODOO_DIR}
 COPY .odoo-source-code ${ODOO_DIR}
 
 COPY --chown=odoo /docker_files/odoo-bin /bin/odoo
