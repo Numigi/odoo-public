@@ -3,5 +3,5 @@ pytest-cov==2.6.1
 pytest-odoo==0.4.7
 
 ipdb==0.8.1
-num2words==0.5.6
 phonenumbers==8.9.2
+slugify==0.0.1
