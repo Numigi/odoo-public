@@ -56,8 +56,6 @@ jobs:
       - run:
          <<: *gitoo_install_extra_addons
       - run:
-          <<: *gitoo_install
-      - run:
           name: Set DOCKER_IMAGE_NAME env variable to odoo-base-community
           command: |
             echo 'export DOCKER_IMAGE_NAME="quay.io/${CIRCLE_PROJECT_USERNAME,,}/${CIRCLE_PROJECT_REPONAME,,}:${CIRCLE_BRANCH/\.0/\.latest}"' >> $BASH_ENV
