@@ -4,9 +4,13 @@ quay_io_login: &quay_io_login
   name: Login to Quay.io register
   command: docker login quay.io -u "${QUAY_USER}" -p "${QUAY_TOKEN}"
 
-gitoo_install: &gitoo_install
-  name: Gitoo install
+gitoo_install_odoo: &gitoo_install_odoo
+  name: Gitoo install odoo source code
   command: ./gitoo-install-odoo.sh
+
+gitoo_install_extra_addons: &gitoo_install_extra_addons
+  name: Gitoo install extra addons
+  command: ./gitoo-install-addons.sh
 
 deploy_docker_build_community: &deploy_docker_build_community
   name: Docker build
@@ -21,23 +25,19 @@ jobs:
     machine: true
     steps:
        - checkout
-
        - run:
           name: Setup Log Folder For Reports
           command: sudo mkdir -p ./log && sudo chmod 777 ./log
-
        - run:
-          <<: *gitoo_install
-
+          <<: *gitoo_install_odoo
+       - run:
+          <<: *gitoo_install_extra_addons
        - run:
           name: Build -- Init Database
           command: docker-compose run --rm odoo odoo --stop-after-init -i main
-
-
        - run:
           name: Run our tests
           command: docker-compose run --rm odoo run_pytest.sh
-
        - run:
           name: Codacy Coverage
           command: |
@@ -52,9 +52,9 @@ jobs:
     steps:
       - checkout
       - run:
-          <<: *quay_io_login
+          <<: *gitoo_install_odoo
       - run:
-          <<: *gitoo_install
+          <<: *gitoo_install_extra_addons
       - run:
           name: Set DOCKER_IMAGE_NAME env variable to odoo-base-community
           command: |
