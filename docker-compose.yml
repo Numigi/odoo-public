@@ -11,6 +11,7 @@ services:
       # docker pipeline.
       - ./test_addons:/mnt/extra-addons
       - ./docker_files/odoo_specific.conf:/etc/odoo/odoo_specific.conf
+      - ./docker_files/main:/mnt/extra-addons/main
     ports:
       - "8069:8069"
       - "8071:8071"
@@ -34,7 +35,9 @@ services:
     image: quay.io/numigi/gitoo:1.5
     volumes:
       - .odoo-source-code:/mnt/odoo
+      - .extra-addons:/mnt/extra-addons
       - ./gitoo.yml:/gitoo.yml
+      - ./gitoo-addons.yml:/gitoo-addons.yml
       - ./patches:/patches
 volumes:
   odoo-web-data:

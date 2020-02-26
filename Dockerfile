@@ -67,7 +67,10 @@ COPY --chown=odoo docker_files/odoo.conf /etc/odoo/
 # required for pytest-odoo
 ENV OPENERP_SERVER "${ODOO_RC}"
 
-VOLUME ["/var/lib/odoo", "/mnt/extra-addons"]
+ENV EXTRA_ADDONS /mnt/extra-addons
+COPY --chown=odoo .extra-addons "${EXTRA_ADDONS}"
+
+VOLUME ["/var/lib/odoo"]
 
 COPY docker_files/entrypoint.sh /
 RUN chmod +x /entrypoint.sh
