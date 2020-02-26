@@ -104,3 +104,6 @@ venv
 filestore
 /.idea
 /log/
+
+.extra-addons
+.odoo-source-code

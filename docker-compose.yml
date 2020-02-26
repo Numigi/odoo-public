@@ -9,7 +9,6 @@ services:
       - ./log:/var/log/odoo
       # Inject the addons as a volume as the addons are just here to test the setup for the next step in the
       # docker pipeline.
-      - ./test_addons:/mnt/extra-addons
       - ./docker_files/odoo_specific.conf:/etc/odoo/odoo_specific.conf
       - ./docker_files/main:/mnt/extra-addons/main
     ports:
