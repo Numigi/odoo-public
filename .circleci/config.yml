@@ -12,7 +12,7 @@ gitoo_install_extra_addons: &gitoo_install_extra_addons
   name: Gitoo install extra addons
   command: ./gitoo-install-addons.sh
 
-deploy_docker_build_community: &deploy_docker_build_community
+deploy_docker_build: &deploy_docker_build
   name: Docker build
   command: docker build --build-arg GIT_TOKEN=${GIT_TOKEN}  --rm --pull -t "${DOCKER_IMAGE_NAME}" .
 
@@ -47,27 +47,48 @@ jobs:
        - store_test_results:
           path: ./log
 
+  deploy:
+    machine: true
+    steps:
+       - checkout
+       - run:
+          <<: *quay_io_login
+       - run:
+          <<: *gitoo_install_odoo
+       - run:
+          <<: *gitoo_install_extra_addons
+       - run:
+          name: Set DOCKER_IMAGE_NAME env variable to odoo-public
+          command: |
+            echo 'export DOCKER_IMAGE_NAME="quay.io/${CIRCLE_PROJECT_USERNAME,,}/${CIRCLE_PROJECT_REPONAME,,}:${CIRCLE_TAG}"' >> $BASH_ENV
+            source $BASH_ENV
+            echo docker image name: ${DOCKER_IMAGE_NAME}
+       - run:
+          <<: *deploy_docker_build
+       - run:
+          <<: *deploy_docker_push
+
   deploy-latest:
     machine: true
     steps:
       - checkout
       - run:
+          <<: *quay_io_login
+      - run:
           <<: *gitoo_install_odoo
       - run:
           <<: *gitoo_install_extra_addons
       - run:
-          name: Set DOCKER_IMAGE_NAME env variable to odoo-base-community
+          name: Set DOCKER_IMAGE_NAME env variable to odoo-public
           command: |
             echo 'export DOCKER_IMAGE_NAME="quay.io/${CIRCLE_PROJECT_USERNAME,,}/${CIRCLE_PROJECT_REPONAME,,}:${CIRCLE_BRANCH/\.0/\.latest}"' >> $BASH_ENV
             source $BASH_ENV
             echo docker image name: ${DOCKER_IMAGE_NAME}
       - run:
-          <<: *deploy_docker_build_community
+          <<: *deploy_docker_build
       - run:
           <<: *deploy_docker_push
 
-  # job that find the next tag for the current branch/repo and push the tag to github.
-  # it will trigger the publish of a new docker image.
   auto-tag:
     machine: true
     steps:
@@ -80,13 +101,25 @@ jobs:
             curl -L $NWS_BIN_LOCATION > ./nws
             chmod +x ./nws
       - run:
-          name: Set tag (odoo-public)
+          name: Set tag
           command: |
             ./nws circleci create-tag
+
+  spread-the-version:
+    machine: true
+    steps:
+      - checkout
       - run:
-          name: Set tag (odoo-base)
+          <<: *quay_io_login
+      - run:
+          name: Get nws
           command: |
-            ./nws circleci create-tag -t odoo-base
+            curl -L $NWS_BIN_LOCATION > ./nws
+            chmod +x ./nws
+      - run:
+          name: Spread the version
+          command: |
+            ./nws circleci spread
 
 workflows:
   version: 2
@@ -97,7 +130,14 @@ workflows:
             tags:
               only: /.*/
 
-      # build latest tags for the 1?.0 branches so it represents the "master" branch
+      - deploy:
+          context: quay.io
+          requires:
+            - run-test
+          filters:
+            branches:
+              only: /^1\d\.0/
+
       - deploy-latest:
           context: quay.io
           requires:
@@ -109,7 +149,15 @@ workflows:
       - auto-tag:
           context: nws
           requires:
-            - deploy-latest
+            - deploy
+          filters:
+            branches:
+              only: /^1\d\.0/
+
+      - spread-the-version:
+          context: nws
+          requires:
+            - deploy
           filters:
             branches:
               only: /^1\d\.0/
