@@ -130,13 +130,21 @@ workflows:
             tags:
               only: /.*/
 
-      - deploy:
-          context: quay.io
+      - auto-tag:
+          context: nws
           requires:
             - run-test
           filters:
             branches:
               only: /^1\d\.0/
+
+      - deploy:
+          context: quay.io
+          requires:
+            - run-test
+          filters:
+            tags:
+              only: /.*/
 
       - deploy-latest:
           context: quay.io
@@ -146,18 +154,10 @@ workflows:
             branches:
               only: /^1\d\.0/
 
-      - auto-tag:
-          context: nws
-          requires:
-            - deploy
-          filters:
-            branches:
-              only: /^1\d\.0/
-
       - spread-the-version:
           context: nws
           requires:
             - deploy
           filters:
-            branches:
-              only: /^1\d\.0/
+            tags:
+              only: /.*/
