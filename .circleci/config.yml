@@ -146,6 +146,8 @@ workflows:
             # Only tags because the env var CIRCLE_TAG is used to define the name of the image.
             tags:
               only: /.*/
+            branches:
+              ignore: /.*/
 
       - deploy-latest:
           context: quay.io
@@ -162,3 +164,5 @@ workflows:
           filters:
             tags:
               only: /.*/
+            branches:
+              ignore: /.*/
