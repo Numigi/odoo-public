@@ -143,6 +143,7 @@ workflows:
           requires:
             - run-test
           filters:
+            # Only tags because the env var CIRCLE_TAG is used to define the name of the image.
             tags:
               only: /.*/
 
