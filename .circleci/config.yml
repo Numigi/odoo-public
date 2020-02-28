@@ -134,13 +134,24 @@ workflows:
             tags:
               only: /.*/
 
-      - deploy:
-          context: quay.io
+      - auto-tag:
+          context: nws
           requires:
             - run-test
           filters:
             branches:
               only: /^1\d\.0/
+
+      - deploy:
+          context: quay.io
+          requires:
+            - run-test
+          filters:
+            # Only tags because the env var CIRCLE_TAG is used to define the name of the image.
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
 
       - deploy-latest:
           context: quay.io
@@ -150,18 +161,12 @@ workflows:
             branches:
               only: /^1\d\.0/
 
-      - auto-tag:
-          context: nws
-          requires:
-            - deploy
-          filters:
-            branches:
-              only: /^1\d\.0/
-
       - spread-the-version:
           context: nws
           requires:
             - deploy
           filters:
+            tags:
+              only: /.*/
             branches:
-              only: /^1\d\.0/
+              ignore: /.*/
