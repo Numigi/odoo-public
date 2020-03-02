@@ -37,7 +37,7 @@ RUN set -x; \
         && gpgconf --kill all \
         && rm -rf "$GNUPGHOME" \
         && apt-get update  \
-        && apt-get install --no-install-recommends postgresql-client \
+        && apt-get install --no-install-recommends -y postgresql-client \
         && rm -rf /var/lib/apt/lists/*
 
 # Install rtlcss (copied from the official odoo image)
