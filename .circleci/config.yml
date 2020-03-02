@@ -8,10 +8,6 @@ gitoo_install_odoo: &gitoo_install_odoo
   name: Gitoo install
   command: ./gitoo-install-odoo.sh
 
-gitoo_install_extra_addons: &gitoo_install_extra_addons
-  name: Gitoo install extra addons
-  command: ./gitoo-install-addons.sh
-
 deploy_docker_build: &deploy_docker_build
   name: Docker build
   command: docker build --build-arg GIT_TOKEN=${GIT_TOKEN}  --rm --pull -t "${DOCKER_IMAGE_NAME}" .
@@ -32,8 +28,6 @@ jobs:
 
        - run:
           <<: *gitoo_install_odoo
-       - run:
-          <<: *gitoo_install_extra_addons
 
        - run:
           name: Build -- Init Database
@@ -62,8 +56,6 @@ jobs:
        - run:
           <<: *gitoo_install_odoo
        - run:
-          <<: *gitoo_install_extra_addons
-       - run:
           name: Set DOCKER_IMAGE_NAME env variable to odoo-public
           command: |
             echo 'export DOCKER_IMAGE_NAME="quay.io/${CIRCLE_PROJECT_USERNAME,,}/${CIRCLE_PROJECT_REPONAME,,}:${CIRCLE_TAG}"' >> $BASH_ENV
@@ -82,8 +74,6 @@ jobs:
           <<: *quay_io_login
       - run:
           <<: *gitoo_install_odoo
-      - run:
-          <<: *gitoo_install_extra_addons
       - run:
           name: Set DOCKER_IMAGE_NAME env variable to odoo-public
           command: |
