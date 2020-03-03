@@ -71,7 +71,7 @@ RUN chmod +x /usr/local/bin/run_pytest.sh
 # Configuration of the coverage report
 COPY ./.coveragerc .
 
-ENV ODOO_HOME /var/lib/odoo
+ENV ODOO_HOME /home/odoo
 RUN useradd -d "${ODOO_HOME}" -m -s /bin/bash odoo
 
 # Set the default config file
