@@ -1,14 +1,9 @@
 - url: https://github.com/odoo/odoo
   branch: "12.0"
-  commit: 3050100eeaaede6aa4a6f17fd9e7ae04cccd9090
+  commit: 5d99785cfbd76bbf200fab228cbc9c14d6f44c07
   base: true
   patches:
     - file: patches/enable-specific-conf.patch
-
-    # PR: https://github.com/odoo/odoo/pull/35078
-    - url: https://github.com/numigi/odoo
-      branch: 12.0-fix_pivot_view_strings
-      commit: fb11493d9a7f34e1fb155899271666eb54a8708e
 
     # PR: https://github.com/odoo/odoo/pull/41663
     - url: https://github.com/numigi/odoo
