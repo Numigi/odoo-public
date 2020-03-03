@@ -71,7 +71,7 @@ RUN chmod +x /usr/local/bin/run_pytest.sh
 # Configuration of the coverage report
 COPY ./.coveragerc .
 
-ENV ODOO_HOME /var/lib/odoo
+ENV ODOO_HOME /home/odoo
 RUN useradd -d "${ODOO_HOME}" -m -s /bin/bash odoo
 
 # Set the default config file
@@ -81,7 +81,11 @@ COPY --chown=odoo docker_files/odoo.conf /etc/odoo/
 # required for pytest-odoo
 ENV OPENERP_SERVER "${ODOO_RC}"
 
-VOLUME ["/var/lib/odoo"]
+ENV ODOO_DATA /var/lib/odoo
+ENV EXTRA_ADDONS /mnt/extra-addons
+RUN mkdir -p "${ODOO_DATA}" "${EXTRA_ADDONS}" \
+    && chown odoo "${ODOO_DATA}" "${EXTRA_ADDONS}"
+VOLUME ["${ODOO_DATA}", "${EXTRA_ADDONS}"]
 
 COPY docker_files/entrypoint.sh /
 RUN chmod +x /entrypoint.sh
@@ -94,9 +98,6 @@ EXPOSE 8069 8071
 ENV ODOO_DIR /usr/lib/python3/dist-packages/
 COPY .odoo-source-code ${ODOO_DIR}
 COPY .extra-addons ${ODOO_DIR}/odoo/addons
-
-ENV EXTRA_ADDONS /mnt/extra-addons
-RUN mkdir -p ${EXTRA_ADDONS} && chown -R odoo ${EXTRA_ADDONS}
 
 COPY --chown=odoo /docker_files/odoo-bin /bin/odoo
 RUN chmod +x /bin/odoo
