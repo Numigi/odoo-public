@@ -5,11 +5,6 @@
   patches:
     - file: patches/enable-specific-conf.patch
 
-    # PR: https://github.com/odoo/odoo/pull/35078
-    - url: https://github.com/numigi/odoo
-      branch: 12.0-fix_pivot_view_strings
-      commit: fb11493d9a7f34e1fb155899271666eb54a8708e
-
     # PR: https://github.com/odoo/odoo/pull/41663
     - url: https://github.com/numigi/odoo
       branch: 12.0-fix-stock-inventory-title
