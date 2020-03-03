@@ -96,7 +96,7 @@ COPY .odoo-source-code ${ODOO_DIR}
 COPY .extra-addons ${ODOO_DIR}/odoo/addons
 
 ENV EXTRA_ADDONS /mnt/extra-addons
-RUN mkdir ${EXTRA_ADDONS} chown odoo ${EXTRA_ADDONS}
+RUN mkdir -p ${EXTRA_ADDONS} && chown -R odoo ${EXTRA_ADDONS}
 
 COPY --chown=odoo /docker_files/odoo-bin /bin/odoo
 RUN chmod +x /bin/odoo
