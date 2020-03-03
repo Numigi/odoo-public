@@ -5,7 +5,7 @@ MAINTAINER numigi <contact@numigi.com>
 ENV LANG C.UTF-8
 
 # Set the version of Odoo
-ENV ODOO_VERSION 12.0
+ENV ODOO_VERSION 11.0
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         ca-certificates \
@@ -57,7 +57,7 @@ RUN set -x;\
 RUN git config --global user.name "Odoo" && \
     git config --global user.email "root@localhost"
 
-RUN pip3 install pip==18.0 wheel==0.32.1 setuptools==45.2.0
+RUN pip3 install pip==9.0.1 wheel==0.30.0 setuptools==45.2.0
 
 COPY docker_files/odoo-requirements.txt docker_files/extra-requirements.txt /
 RUN pip3 install -r /odoo-requirements.txt -r extra-requirements.txt && \
@@ -81,7 +81,11 @@ COPY --chown=odoo docker_files/odoo.conf /etc/odoo/
 # required for pytest-odoo
 ENV OPENERP_SERVER "${ODOO_RC}"
 
-VOLUME ["/var/lib/odoo"]
+ENV ODOO_DATA /var/lib/odoo
+ENV EXTRA_ADDONS /mnt/extra-addons
+RUN mkdir -p "${ODOO_DATA}" "${EXTRA_ADDONS}" \
+    && chown odoo "${ODOO_DATA}" "${EXTRA_ADDONS}"
+VOLUME ["${ODOO_DATA}", "${EXTRA_ADDONS}"]
 
 COPY docker_files/entrypoint.sh /
 RUN chmod +x /entrypoint.sh
@@ -93,10 +97,6 @@ EXPOSE 8069 8071
 
 ENV ODOO_DIR /usr/lib/python3/dist-packages/
 COPY .odoo-source-code ${ODOO_DIR}
-COPY .extra-addons ${ODOO_DIR}/odoo/addons
-
-ENV EXTRA_ADDONS /mnt/extra-addons
-RUN mkdir -p ${EXTRA_ADDONS} && chown -R odoo ${EXTRA_ADDONS}
 
 COPY --chown=odoo /docker_files/odoo-bin /bin/odoo
 RUN chmod +x /bin/odoo
