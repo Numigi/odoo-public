@@ -7,3 +7,4 @@
       commit: 61a83bb372dc83d6344993034ad0ee6123846d53
   includes:
     - base_view_inheritance_extension
+    - onchange_helper
