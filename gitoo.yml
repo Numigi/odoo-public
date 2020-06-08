@@ -1,6 +1,6 @@
-- url: https://github.com/odoo/odoo
+- url: https://github.com/OCA/OpenUpgrade
   branch: "12.0"
-  commit: 2189d5c8bf70a3555d48451060309605b28ba068
+  commit: 5dbe84459125e930d79ea89d66cf2fbcdf96b488
   base: true
   patches:
     - file: patches/enable-specific-conf.patch
