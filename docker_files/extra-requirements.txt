@@ -6,4 +6,4 @@ ipdb==0.8.1
 phonenumbers==8.9.2
 slugify==0.0.1
 
-openupgradelib==2.0.0
+git+https://github.com/OCA/openupgradelib@3.0.0
