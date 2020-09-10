@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         git-core \
         gnupg \
         libldap2-dev \
+        liblz-dev \
         libpq-dev \
         libsasl2-dev \
         libssl-dev \
