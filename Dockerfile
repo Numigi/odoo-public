@@ -1,4 +1,4 @@
-FROM debian:stretch-20200130-slim
+FROM python:3.7.9-slim-stretch
 MAINTAINER numigi <contact@numigi.com>
 
 # Generate locale C.UTF-8 for postgres and general locale data
