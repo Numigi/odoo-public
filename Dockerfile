@@ -8,6 +8,7 @@ ENV LANG C.UTF-8
 ENV ODOO_VERSION 12.0
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+        build-essential \
         ca-certificates \
         curl \
         dirmngr \
