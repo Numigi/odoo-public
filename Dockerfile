@@ -100,7 +100,7 @@ CMD ["odoo"]
 
 EXPOSE 8069 8071
 
-ENV ODOO_DIR /usr/lib/python3/dist-packages/
+ENV ODOO_DIR /usr/local/lib/python3.7/site-packages
 COPY .odoo-source-code ${ODOO_DIR}
 COPY .extra-addons ${ODOO_DIR}/odoo/addons
 
