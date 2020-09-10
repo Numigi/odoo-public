@@ -1,4 +1,4 @@
-FROM debian:stretch-20200130-slim
+FROM python:3.7.9-slim-stretch
 MAINTAINER numigi <contact@numigi.com>
 
 # Generate locale C.UTF-8 for postgres and general locale data
@@ -8,6 +8,7 @@ ENV LANG C.UTF-8
 ENV ODOO_VERSION 12.0
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+        build-essential \
         ca-certificates \
         curl \
         dirmngr \
@@ -16,8 +17,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         git-core \
         gnupg \
         libldap2-dev \
+        liblz-dev \
+        libpq-dev \
         libsasl2-dev \
         libssl-dev \
+        libxml2-dev \
+        libxslt1-dev \
         node-less \
         python3-dev \
         python3-pip \
@@ -95,7 +100,7 @@ CMD ["odoo"]
 
 EXPOSE 8069 8071
 
-ENV ODOO_DIR /usr/lib/python3/dist-packages/
+ENV ODOO_DIR /usr/local/lib/python3.7/site-packages
 COPY .odoo-source-code ${ODOO_DIR}
 COPY .extra-addons ${ODOO_DIR}/odoo/addons
 
