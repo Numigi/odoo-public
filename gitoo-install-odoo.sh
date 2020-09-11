@@ -7,4 +7,4 @@ if [[ -d "$destination_folder" ]]
     sudo rm -rf ${destination_folder}
 fi
 
-docker-compose run --rm gitoo install-all --destination /mnt/odoo --conf_file gitoo.yml
+docker-compose run --rm gitoo install-all --lang fr --destination /mnt/odoo --conf_file gitoo.yml
