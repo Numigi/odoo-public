@@ -5,7 +5,7 @@ MAINTAINER numigi <contact@numigi.com>
 ENV LANG C.UTF-8
 
 # Set the version of Odoo
-ENV ODOO_VERSION 12.0
+ENV ODOO_VERSION 14.0
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
@@ -62,7 +62,7 @@ RUN set -x;\
 RUN git config --global user.name "Odoo" && \
     git config --global user.email "root@localhost"
 
-RUN pip3 install pip==18.0 wheel==0.32.1 setuptools==45.2.0
+RUN pip3 install pip==21.0.1 wheel==0.36.2 setuptools==54.1.1
 
 COPY docker_files/odoo-requirements.txt docker_files/extra-requirements.txt /
 RUN pip3 install -r /odoo-requirements.txt -r extra-requirements.txt && \

@@ -1,6 +1,6 @@
-From 3b823b9d4f3b19c880e05a71bd16f4c207450d8a Mon Sep 17 00:00:00 2001
-From: David Dufresne <david.dufresne@numigi.net>
-Date: Thu, 17 Jan 2019 15:45:19 -0500
+From 052442d84041859a4760f12a2f161bebb20e963b Mon Sep 17 00:00:00 2001
+From: David Dufresne <27902736+ddufresne@users.noreply.github.com>
+Date: Tue, 9 Mar 2021 15:16:54 -0500
 Subject: [PATCH 1/1] Enable a specific config file
 
 ---
@@ -8,12 +8,12 @@ Subject: [PATCH 1/1] Enable a specific config file
  1 file changed, 23 insertions(+), 1 deletion(-)
 
 diff --git a/odoo/tools/config.py b/odoo/tools/config.py
-index 47c5b633cff..49b2b6a19ce 100644
+index f6e186f15ab..ff7be5b8f2b 100644
 --- a/odoo/tools/config.py
 +++ b/odoo/tools/config.py
-@@ -661,4 +661,26 @@ class configmanager(object):
-                 self.options['admin_passwd'] = updated_hash
-             return True
+@@ -725,4 +725,26 @@ class configmanager(object):
+         return realpath(abspath(expanduser(expandvars(path.strip()))))
+ 
  
 -config = configmanager()
 +class ConfigManagerWithSpecificConfigFile(configmanager):
