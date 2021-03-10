@@ -17,8 +17,15 @@ RUN apt-get update && \
         gcc \
         git-core \
         gnupg \
+        libldap2-dev \
+        liblz-dev \
+        libpq-dev \
+        libsasl2-dev \
         libssl-dev \
+        libxml2-dev \
+        libxslt1-dev \
         node-less \
+        python3-dev \
         npm \
         python3-num2words \
         python3-pdfminer \
