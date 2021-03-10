@@ -13,14 +13,15 @@ RUN apt-get update && \
         curl \
         dirmngr \
         fonts-noto-cjk \
+        git-core \
         gnupg \
         libssl-dev \
         node-less \
         npm \
         python3-num2words \
         python3-pdfminer \
-        python3-pip \
         python3-phonenumbers \
+        python3-pip \
         python3-pyldap \
         python3-qrcode \
         python3-renderpm \
