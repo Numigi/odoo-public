@@ -9,10 +9,12 @@ ENV ODOO_VERSION 14.0
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
+        build-essential \
         ca-certificates \
         curl \
         dirmngr \
         fonts-noto-cjk \
+        gcc \
         git-core \
         gnupg \
         libssl-dev \
