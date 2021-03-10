@@ -11,7 +11,7 @@
     'category': 'Other',
     'summary': 'Tests to make sure the setup is as wanted.',
     'depends': [
-        'base_view_inheritance_extension',
+        # 'base_view_inheritance_extension',
     ],
     'data': [],
     'installable': True,
