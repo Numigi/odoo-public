@@ -1,4 +1,4 @@
-FROM python:3.7.9-slim-stretch
+FROM python:3.8.8-slim-buster
 MAINTAINER numigi <contact@numigi.com>
 
 # Generate locale C.UTF-8 for postgres and general locale data
