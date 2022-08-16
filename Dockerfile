@@ -64,7 +64,7 @@ RUN npm install -g rtlcss
 RUN git config --global user.name "Odoo" && \
     git config --global user.email "root@localhost"
 
-RUN pip3 install pip==21.0.1 wheel==0.36.2 setuptools==54.1.1
+RUN pip3 install pip==21.0.1 wheel==0.36.2 setuptools==54.1.1 pyyaml==5.4.1
 
 COPY docker_files/odoo-requirements.txt docker_files/extra-requirements.txt /
 RUN pip3 install -r /odoo-requirements.txt -r extra-requirements.txt && \
