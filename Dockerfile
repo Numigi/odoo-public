@@ -64,7 +64,7 @@ RUN set -x;\
 RUN git config --global user.name "Odoo" && \
     git config --global user.email "root@localhost"
 
-RUN pip3 install pip==22.3.1 wheel==0.32.1 setuptools==45.2.0
+RUN pip3 install wheel==0.32.1 setuptools==45.2.0
 
 COPY docker_files/odoo-requirements.txt docker_files/extra-requirements.txt /
 RUN pip3 install -r /odoo-requirements.txt -r extra-requirements.txt && \
