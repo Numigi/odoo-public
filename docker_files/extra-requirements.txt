@@ -1,6 +1,6 @@
 gitoo==1.7
-pytest-cov==2.10.1
-pytest-odoo==0.6.0
+pytest-cov==4.0.0
+pytest-odoo==0.9.1
 
 ipdb==0.13.9
 astroid==2.12.2  # required for ipython to work properly
