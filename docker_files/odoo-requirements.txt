@@ -15,6 +15,7 @@ greenlet==0.4.10 ; python_version < '3.7'
 greenlet==0.4.15 ; python_version == '3.7'
 greenlet==0.4.17 ; python_version > '3.7' and python_version <= '3.9'
 greenlet==1.1.2 ; python_version  > '3.9'  # (Jammy)
+html2text==2016.9.19
 idna==2.6
 Jinja2==2.10.1; python_version < '3.8'
 # bullseye version, focal patched 2.10
