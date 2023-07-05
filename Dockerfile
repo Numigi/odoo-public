@@ -36,7 +36,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install latest postgresql-client (copied from the official odoo image)
 RUN set -x; \
-        echo 'deb http://apt.postgresql.org/pub/repos/apt buster-pgdg 14' > /etc/apt/sources.list.d/pgdg.list \
+        echo 'deb http://apt.postgresql.org/pub/repos/apt buster-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
         && export GNUPGHOME="$(mktemp -d)" \
         && repokey='B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8' \
         && gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "${repokey}" \
@@ -44,7 +44,7 @@ RUN set -x; \
         && gpgconf --kill all \
         && rm -rf "$GNUPGHOME" \
         && apt-get update  \
-        && apt-get install --no-install-recommends -y postgresql-client-13 \
+        && apt-get install --no-install-recommends -y postgresql-client \
         && rm -rf /var/lib/apt/lists/*
 
 # Install rtlcss (copied from the official odoo image)
