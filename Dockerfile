@@ -5,7 +5,7 @@ MAINTAINER numigi <contact@numigi.com>
 ENV LANG C.UTF-8
 
 # Set the version of Odoo
-ENV ODOO_VERSION 14.0
+ENV ODOO_VERSION 13.0
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
