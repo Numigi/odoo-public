@@ -1,11 +1,11 @@
-diff --git a/odoo/tools/config.py b/../old_odoo16/odoo/odoo/tools/config.py
-index 47af67d3..b0313946 100644
+diff --git a/odoo/tools/config.py b/odoo/tools/config.py
+index 415e611e..0ca94770 100644
 --- a/odoo/tools/config.py
-+++ b/../old_odoo16/odoo/odoo/tools/config.py
-@@ -760,4 +760,30 @@ class configmanager(object):
++++ b/odoo/tools/config.py
+@@ -760,4 +760,27 @@ class configmanager(object):
          return normcase(realpath(abspath(expanduser(expandvars(path.strip())))))
-
-
+ 
+ 
 -config = configmanager()
 +class ConfigManagerWithSpecificConfigFile(configmanager):
 +
