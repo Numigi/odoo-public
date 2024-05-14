@@ -7,6 +7,7 @@ ENV LANG C.UTF-8
 # Set the version of Odoo
 ENV ODOO_VERSION 16.0
 
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         build-essential \
@@ -63,7 +64,7 @@ RUN npm install -g rtlcss
 RUN git config --global user.name "Odoo" && \
     git config --global user.email "root@localhost"
 
-RUN pip3 install pip==24.0 wheel==0.43.0 setuptools==69.5.1 pyyaml==6.0.1
+RUN pip3 install pip==24.0 wheel==0.43.0 pyyaml==6.0.1
 
 COPY docker_files/odoo-requirements.txt docker_files/extra-requirements.txt /
 RUN pip3 install -r /odoo-requirements.txt -r extra-requirements.txt && \
