@@ -1,7 +1,8 @@
-gitoo==1.7
+gitoo==1.8
 pytest-cov==5.0.0
 pytest-odoo==1.0.0
 ipdb==0.13.13
 astroid==2.12.2  # required for ipython to work properly
 phonenumbers==8.13.36
 slugify==0.0.1
+pystache==0.6.5
