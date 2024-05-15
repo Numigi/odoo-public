@@ -1,3 +1,4 @@
+astor==0.8.1
 gitoo==1.8
 pytest-cov==5.0.0
 pytest-odoo==1.0.0
