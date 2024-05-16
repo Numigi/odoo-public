@@ -28,7 +28,7 @@ jobs:
        - checkout
        - run:
           name: Setup Log Folder For Reports
-          command: sudo mkdir -p ./log && sudo chmod 777 ./log && sudo chmod 777 ./root/__manifest__.py
+          command: sudo mkdir -p ./log && sudo chmod 777 ./log
        - run:
           <<: *gitoo_install_odoo
        - run:
@@ -38,7 +38,7 @@ jobs:
           command: docker-compose run --rm odoo odoo --stop-after-init -i main
        - run:
           name: Run our tests
-          command: docker-compose run --rm odoo run_pytest.sh
+          command: docker-compose run --rm odoo --user odoo run_pytest.sh
 
   deploy:
     machine: true
