@@ -1,7 +1,7 @@
 astor==0.8.1
 gitoo==1.8
 pytest-cov==5.0.0
-pytest-odoo==1.0.0
+pytest-odoo==0.9.1
 ipdb==0.13.13
 astroid==2.12.2  # required for ipython to work properly
 phonenumbers==8.13.36
