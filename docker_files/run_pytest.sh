@@ -2,9 +2,14 @@
 LOG_DIR=${LOG_ODOO:-/var/log/odoo}
 TEST_DIR=${1:-/mnt/extra-addons}
 
-cd $LOG_DIR
+mkdir -p $LOG_DIR
+chown -R odoo:odoo $LOG_DIR
 
-pytest $TEST_DIR \
+
+cd $TEST_DIR
+
+# Run pytest with the specified directories and options
+pytest . \
     -v \
     --disable-warnings \
     --cov \
