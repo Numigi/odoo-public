@@ -1,11 +1,12 @@
-FROM python:3.8.8-slim-buster
+FROM python:3.10-bookworm
 MAINTAINER numigi <contact@numigi.com>
 
 # Generate locale C.UTF-8 for postgres and general locale data
 ENV LANG C.UTF-8
 
 # Set the version of Odoo
-ENV ODOO_VERSION 14.0
+ENV ODOO_VERSION 16.0
+
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -41,12 +42,11 @@ RUN apt-get update && \
         python3-xlrd \
         python3-xlwt \
         xz-utils \
-    && curl -o wkhtmltox.deb -sSL https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.buster_amd64.deb \
-    && echo 'ea8277df4297afc507c61122f3c349af142f31e5 wkhtmltox.deb' | sha1sum -c - \
+    && curl -o wkhtmltox.deb -sSL https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-3/wkhtmltox_0.12.6.1-3.bookworm_amd64.deb \
     && apt-get install -y --no-install-recommends ./wkhtmltox.deb \
     && rm -rf /var/lib/apt/lists/* wkhtmltox.deb
 
-RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
+RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ bookworm-pgdg 16' > /etc/apt/sources.list.d/pgdg.list \
     && GNUPGHOME="$(mktemp -d)" \
     && export GNUPGHOME \
     && repokey='B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8' \
@@ -64,7 +64,7 @@ RUN npm install -g rtlcss
 RUN git config --global user.name "Odoo" && \
     git config --global user.email "root@localhost"
 
-RUN pip3 install pip==21.0.1 wheel==0.36.2 setuptools==54.1.1 pyyaml==5.4.1
+RUN pip3 install pip==24.0 wheel==0.43.0 pyyaml==6.0.1 setuptools==69.5.1
 
 COPY docker_files/odoo-requirements.txt docker_files/extra-requirements.txt /
 RUN pip3 install -r /odoo-requirements.txt -r extra-requirements.txt && \
@@ -90,8 +90,8 @@ ENV OPENERP_SERVER "${ODOO_RC}"
 
 ENV ODOO_DATA /var/lib/odoo
 ENV EXTRA_ADDONS /mnt/extra-addons
-RUN mkdir -p "${ODOO_DATA}" "${EXTRA_ADDONS}" \
-    && chown odoo "${ODOO_DATA}" "${EXTRA_ADDONS}"
+RUN mkdir -p "${ODOO_DATA}" "${EXTRA_ADDONS}" /var/log/odoo \
+    && chown -R odoo:odoo "${ODOO_DATA}" "${EXTRA_ADDONS}" /var/log/odoo
 VOLUME ["${ODOO_DATA}", "${EXTRA_ADDONS}"]
 
 COPY docker_files/entrypoint.sh /
@@ -102,7 +102,7 @@ CMD ["odoo"]
 
 EXPOSE 8069 8071
 
-ENV ODOO_DIR /usr/local/lib/python3.8/site-packages
+ENV ODOO_DIR /usr/local/lib/python3.10/site-packages
 COPY .odoo-source-code ${ODOO_DIR}
 COPY .extra-addons ${ODOO_DIR}/odoo/addons
 
