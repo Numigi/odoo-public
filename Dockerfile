@@ -91,7 +91,7 @@ ENV OPENERP_SERVER "${ODOO_RC}"
 ENV ODOO_DATA /var/lib/odoo
 ENV EXTRA_ADDONS /mnt/extra-addons
 RUN mkdir -p "${ODOO_DATA}" "${EXTRA_ADDONS}" \
-    && chown odoo "${ODOO_DATA}" "${EXTRA_ADDONS}"
+    && chown -R odoo:odoo "${ODOO_DATA}" "${EXTRA_ADDONS}"
 VOLUME ["${ODOO_DATA}", "${EXTRA_ADDONS}"]
 
 COPY docker_files/entrypoint.sh /
