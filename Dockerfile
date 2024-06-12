@@ -55,7 +55,7 @@ RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ bookworm-pgdg 16' > /etc/
     && gpgconf --kill all \
     && rm -rf "$GNUPGHOME" \
     && apt-get update  \
-    && apt-get install --no-install-recommends -y postgresql-client \
+    && apt-get install --no-install-recommends -y postgresql-client-16 \
     && rm -f /etc/apt/sources.list.d/pgdg.list \
     && rm -rf /var/lib/apt/lists/*
 
