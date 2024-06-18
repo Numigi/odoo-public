@@ -5,5 +5,4 @@ It should be commit into the docker but only mounted, as we want this module onl
 
 Contributors
 ------------
-* Jordi Riera
-* David Dufresne
+* Numigi (tm) and all its contributors (https://bit.ly/numigiens)
