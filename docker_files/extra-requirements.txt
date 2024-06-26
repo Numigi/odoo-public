@@ -6,4 +6,5 @@ ipdb==0.13.13
 astroid==2.12.2  # required for ipython to work properly
 phonenumbers==8.13.36
 slugify==0.0.1
+pytest==7.4.4
 pystache==0.6.5
