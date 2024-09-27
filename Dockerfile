@@ -73,11 +73,11 @@ RUN pip3 install -r /odoo-requirements.txt -r extra-requirements.txt && \
 
 # Files to run the tests
 # run_pytest to run the test with pytest-odoo
-COPY ./docker_files/run_pytest.sh /usr/local/bin/
+COPY --chown=odoo ./docker_files/run_pytest.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/run_pytest.sh
 
 # Configuration of the coverage report
-COPY ./.coveragerc .
+COPY --chown=odoo ./.coveragerc .
 
 ENV ODOO_HOME /home/odoo
 RUN useradd -d "${ODOO_HOME}" -m -s /bin/bash odoo
@@ -105,7 +105,7 @@ EXPOSE 8069 8071
 
 ENV ODOO_DIR /usr/local/lib/python3.8/site-packages
 COPY .odoo-source-code ${ODOO_DIR}
-COPY .extra-addons ${ODOO_DIR}/odoo/addons
+COPY .extra-addons "${EXTRA_ADDONS}"
 
 COPY --chown=odoo /docker_files/odoo-bin /bin/odoo
 RUN chmod +x /bin/odoo
