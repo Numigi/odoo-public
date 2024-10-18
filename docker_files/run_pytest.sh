@@ -11,4 +11,4 @@ pytest $TEST_DIR \
     --cov-branch \
     --cov-config /.coveragerc \
     --cov-report xml \
-    --junit-xml=${LOG_DIR}/junit.xml
+    --junit-xml="${LOG_DIR}/junit.xml"
