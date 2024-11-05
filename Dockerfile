@@ -105,7 +105,7 @@ EXPOSE 8069 8071
 
 ENV ODOO_DIR /usr/local/lib/python3.8/site-packages
 COPY .odoo-source-code ${ODOO_DIR}
-COPY .extra-addons "${EXTRA_ADDONS}"
+COPY .extra-addons ${ODOO_DIR}/odoo/addons
 
 COPY --chown=odoo /docker_files/odoo-bin /bin/odoo
 RUN chmod +x /bin/odoo
