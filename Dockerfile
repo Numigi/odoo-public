@@ -1,5 +1,5 @@
 FROM python:3.10-bookworm
-MAINTAINER numigi <contact@numigi.com>
+LABEL numigi <contact@numigi.com>
 
 # Generate locale C.UTF-8 for postgres and general locale data
 ENV LANG C.UTF-8
@@ -10,38 +10,39 @@ ENV ODOO_VERSION 16.0
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        build-essential \
-        ca-certificates \
-        curl \
-        dirmngr \
-        fonts-noto-cjk \
-        gcc \
-        git-core \
-        gnupg \
-        libldap2-dev \
-        liblz-dev \
-        libpq-dev \
-        libsasl2-dev \
-        libssl-dev \
-        libxml2-dev \
-        libxslt1-dev \
-        node-less \
-        python3-dev \
-        npm \
-        python3-num2words \
-        python3-pdfminer \
-        python3-phonenumbers \
-        python3-pip \
-        python3-pyldap \
-        python3-qrcode \
-        python3-renderpm \
-        python3-setuptools \
-        python3-slugify \
-        python3-vobject \
-        python3-watchdog \
-        python3-xlrd \
-        python3-xlwt \
-        xz-utils \
+    build-essential \
+    ca-certificates \
+    curl \
+    dirmngr \
+    fonts-noto-cjk \
+    gcc \
+    git-core \
+    gnupg \
+    libldap2-dev \
+    liblz-dev \
+    libev-dev \
+    libpq-dev \
+    libsasl2-dev \
+    libssl-dev \
+    libxml2-dev \
+    libxslt1-dev \
+    node-less \
+    python3-dev \
+    npm \
+    python3-num2words \
+    python3-pdfminer \
+    python3-phonenumbers \
+    python3-pip \
+    python3-pyldap \
+    python3-qrcode \
+    python3-renderpm \
+    python3-setuptools \
+    python3-slugify \
+    python3-vobject \
+    python3-watchdog \
+    python3-xlrd \
+    python3-xlwt \
+    xz-utils \
     && curl -o wkhtmltox.deb -sSL https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-3/wkhtmltox_0.12.6.1-3.bookworm_amd64.deb \
     && apt-get install -y --no-install-recommends ./wkhtmltox.deb \
     && rm -rf /var/lib/apt/lists/* wkhtmltox.deb
@@ -64,11 +65,11 @@ RUN npm install -g rtlcss
 RUN git config --global user.name "Odoo" && \
     git config --global user.email "root@localhost"
 
-RUN pip3 install pip==24.0 wheel==0.43.0 pyyaml==6.0.1 setuptools==69.5.1
+RUN pip3 install pip==24.3.1 Cython==0.29.24 pyyaml==6.0.2 setuptools==75.6.0
 
 COPY docker_files/odoo-requirements.txt docker_files/extra-requirements.txt /
 RUN pip3 install -r /odoo-requirements.txt -r extra-requirements.txt && \
-	rm /odoo-requirements.txt /extra-requirements.txt
+    rm /odoo-requirements.txt /extra-requirements.txt
 
 # Files to run the tests
 # run_pytest to run the test with pytest-odoo
@@ -100,7 +101,7 @@ ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["odoo"]
 
-EXPOSE 8069 8071
+EXPOSE 8069 8071 8072
 
 ENV ODOO_DIR /usr/local/lib/python3.10/site-packages
 COPY .odoo-source-code ${ODOO_DIR}
