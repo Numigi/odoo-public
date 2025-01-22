@@ -1,0 +1,14 @@
+diff --git a/odoo/addons/base/models/assetsbundle.py b/odoo/addons/base/models/assetsbundle.py
+index 24e4e7c1cce7..bfcea86ea445 100644
+--- a/odoo/addons/base/models/assetsbundle.py
++++ b/odoo/addons/base/models/assetsbundle.py
+@@ -283,6 +283,9 @@ class AssetsBundle(object):
+                FROM ir_attachment
+               WHERE create_uid = %s
+                 AND url like %s
++                AND res_model = 'ir.ui.view'
++                AND res_id = 0
++                AND public = true
+            GROUP BY name
+            ORDER BY name
+          """, [SUPERUSER_ID, url_pattern])
