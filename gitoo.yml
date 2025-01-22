@@ -5,3 +5,4 @@
   patches:
     - file: patches/enable-specific-conf.patch
     - file: patches/CVE-2024-49575.patch
+    - file: patches/fix_server_limit_concurrent_including_cron_thread.patch
