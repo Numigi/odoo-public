@@ -5,4 +5,5 @@
   patches:
     - file: patches/enable-specific-conf.patch
     - file: patches/CVE-2024-49575.patch
+    - file: patches/fix_base_assets_performance.patch
     - file: patches/imp_core_new_class_methods.patch
