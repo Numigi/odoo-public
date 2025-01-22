@@ -4,3 +4,4 @@
   base: true
   patches:
     - file: patches/enable-specific-conf.patch
+    - file: patches/CVE-2024-49575.patch
