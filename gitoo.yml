@@ -9,3 +9,4 @@
     - file: patches/fix_server_limit_concurrent_including_cron_thread.patch
     - file: patches/imp_core_new_class_methods.patch
     - file: patches/fix_tools_whitespace_translations.patch
+    - file: patches/fix_hr_settings_user_access.patch
