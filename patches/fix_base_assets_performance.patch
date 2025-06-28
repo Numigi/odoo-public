@@ -1,8 +1,17 @@
+From 6d86c409831c9d9710f5a84ccac4188eddb80962 Mon Sep 17 00:00:00 2001
+From: Rivo Lalaina <rivo2302@gmail.com>
+Date: Sat, 28 Jun 2025 15:50:49 +0300
+Subject: [PATCH] FIX Base assets performance
+
+---
+ odoo/addons/base/models/assetsbundle.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
 diff --git a/odoo/addons/base/models/assetsbundle.py b/odoo/addons/base/models/assetsbundle.py
-index 24e4e7c1cce7..bfcea86ea445 100644
+index f074b72f..cc7160d8 100644
 --- a/odoo/addons/base/models/assetsbundle.py
 +++ b/odoo/addons/base/models/assetsbundle.py
-@@ -283,6 +283,9 @@ class AssetsBundle(object):
+@@ -277,6 +277,9 @@ class AssetsBundle(object):
                 FROM ir_attachment
                WHERE create_uid = %s
                  AND url like %s
@@ -12,3 +21,6 @@ index 24e4e7c1cce7..bfcea86ea445 100644
             GROUP BY name
             ORDER BY name
           """, [SUPERUSER_ID, url_pattern])
+-- 
+2.34.1
+

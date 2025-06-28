@@ -1,8 +1,17 @@
+From 85a63ff48132c95d87f0c43168ce5ddf6abece22 Mon Sep 17 00:00:00 2001
+From: Rivo Lalaina <rivo2302@gmail.com>
+Date: Sat, 28 Jun 2025 15:56:10 +0300
+Subject: [PATCH] [FIX] server limim concurrent including cron thread
+
+---
+ odoo/service/server.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/odoo/service/server.py b/odoo/service/server.py
-index 800161662f33..283f51ef5d3b 100644
+index 0b091369..25876d6e 100644
 --- a/odoo/service/server.py
 +++ b/odoo/service/server.py
-@@ -144,7 +144,7 @@ class ThreadedWSGIServerReloadable(LoggingBaseWSGIServerMixIn, werkzeug.serving.
+@@ -143,7 +143,7 @@ class ThreadedWSGIServerReloadable(LoggingBaseWSGIServerMixIn, werkzeug.serving.
                  # If the value can't be parsed to an integer then it's computed in an automated way to
                  # half the size of db_maxconn because while most requests won't borrow cursors concurrently
                  # there are some exceptions where some controllers might allocate two or more cursors.
@@ -11,3 +20,6 @@ index 800161662f33..283f51ef5d3b 100644
              self.http_threads_sem = threading.Semaphore(self.max_http_threads)
          super(ThreadedWSGIServerReloadable, self).__init__(host, port, app,
                                                             handler=RequestHandler)
+-- 
+2.34.1
+
