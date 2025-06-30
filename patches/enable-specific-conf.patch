@@ -1,14 +1,14 @@
 diff --git a/odoo/tools/config.py b/odoo/tools/config.py
-index 415e611e..0ca94770 100644
+index a93d1bd6..7d1c22b3 100644
 --- a/odoo/tools/config.py
 +++ b/odoo/tools/config.py
-@@ -760,4 +760,27 @@ class configmanager(object):
-         return normcase(realpath(abspath(expanduser(expandvars(path.strip())))))
+@@ -741,4 +741,28 @@ class configmanager(object):
+         return realpath(abspath(expanduser(expandvars(path.strip()))))
  
  
 -config = configmanager()
 +class ConfigManagerWithSpecificConfigFile(configmanager):
-+
++    
 +    def load(self):
 +        """Load the config from a generic and a specific rc file.
 +
@@ -31,3 +31,4 @@ index 415e611e..0ca94770 100644
 +
 +
 +config = ConfigManagerWithSpecificConfigFile()
++
