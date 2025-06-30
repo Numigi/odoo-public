@@ -1,0 +1,32 @@
+From 9322cff7487a33408117dc70e5b48766db7989b0 Mon Sep 17 00:00:00 2001
+From: Rivo Lalaina <rivo2302@gmail.com>
+Date: Sat, 28 Jun 2025 16:01:28 +0300
+Subject: [PATCH] [Imp] core new class methods
+
+---
+ odoo/modules/registry.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/odoo/modules/registry.py b/odoo/modules/registry.py
+index 8c5b0f07..50d97342 100644
+--- a/odoo/modules/registry.py
++++ b/odoo/modules/registry.py
+@@ -73,6 +73,7 @@ class Registry(Mapping):
+             with odoo.api.Environment.manage():
+                 registry = object.__new__(cls)
+                 registry.init(db_name)
++                registry.new = registry.init = registry.registries = None
+ 
+                 # Initializing a registry will call general code which will in
+                 # turn call Registry() to obtain the registry being initialized.
+@@ -101,7 +102,6 @@ class Registry(Mapping):
+             registry._init = False
+             registry.ready = True
+             registry.registry_invalidated = bool(update_module)
+-            registry.new = registry.init = registry.registries = None
+ 
+         return registry
+ 
+-- 
+2.34.1
+

@@ -1,0 +1,25 @@
+From d843c86a0e6c1a0b03b27ca8bcf48083b5f5bf57 Mon Sep 17 00:00:00 2001
+From: Rivo Lalaina <rivo2302@gmail.com>
+Date: Sat, 28 Jun 2025 15:58:05 +0300
+Subject: [PATCH] [FIX] whitespace translations
+
+---
+ odoo/tools/translate.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/odoo/tools/translate.py b/odoo/tools/translate.py
+index 6045191f..841a5608 100644
+--- a/odoo/tools/translate.py
++++ b/odoo/tools/translate.py
+@@ -166,7 +166,7 @@ def translate_xml_node(node, callback, parse, serialize):
+     """
+ 
+     def nonspace(text):
+-        return bool(text) and len(re.sub(r'\W+', '', text)) > 1
++        return bool(text) and not space_pattern.fullmatch(text)
+ 
+     def concat(text1, text2):
+         return text2 if text1 is None else text1 + (text2 or "")
+-- 
+2.34.1
+

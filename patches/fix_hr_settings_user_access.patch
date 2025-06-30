@@ -1,0 +1,25 @@
+From 94ee242603154e5b01661b8c96cff4818d767752 Mon Sep 17 00:00:00 2001
+From: Rivo Lalaina <rivo2302@gmail.com>
+Date: Sat, 28 Jun 2025 15:52:53 +0300
+Subject: [PATCH] FIX Hr Fix Settings User Access
+
+---
+ addons/hr/security/ir.model.access.csv | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/addons/hr/security/ir.model.access.csv b/addons/hr/security/ir.model.access.csv
+index e28b4065..0d659020 100644
+--- a/addons/hr/security/ir.model.access.csv
++++ b/addons/hr/security/ir.model.access.csv
+@@ -2,7 +2,7 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+ access_hr_employee_category_user,hr.employee.category.user,model_hr_employee_category,group_hr_user,1,1,1,1
+ access_hr_employee_category_emp,hr.employee.category.emp,model_hr_employee_category,base.group_user,1,0,0,0
+ access_hr_employee_user,hr.employee user,model_hr_employee,group_hr_user,1,1,1,1
+-access_hr_employee_system_user,hr.employee system user,model_hr_employee,base.group_user,0,0,0,0
++access_hr_employee_system_user,hr.employee system user,model_hr_employee,base.group_user,1,0,0,0
+ access_hr_employee_public_user,hr.employee_public,model_hr_employee_public,base.group_user,1,0,0,0
+ access_hr_employee_resource_user,resource.resource.user,resource.model_resource_resource,group_hr_user,1,1,1,1
+ access_hr_department_user,hr.department.user,model_hr_department,group_hr_user,1,1,1,1
+-- 
+2.34.1
+
