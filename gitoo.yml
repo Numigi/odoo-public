@@ -2,5 +2,5 @@
   branch: "13.0"
   commit: 4cc086d330b73514fbc64a7fcf22d8a7a9f1b691
   base: true
-  patches:
-    - file: patches/enable-specific-conf.patch
+  #patches:
+   # - file: patches/enable-specific-conf.patch
