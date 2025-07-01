@@ -7,15 +7,16 @@ docutils==0.16
 ebaysdk==2.1.5
 freezegun==0.3.11; python_version < '3.8'
 freezegun==0.3.15; python_version >= '3.8'
-gevent==1.5.0 ; sys_platform != 'win32' and python_version == '3.7'
-gevent==20.9.0 ; sys_platform != 'win32' and python_version > '3.7' and python_version <= '3.9'
-gevent==22.8.0 ; sys_platform != 'win32' and python_version > '3.9' and python_version <= '3.10'  # (Jammy)
-gevent==22.10.2; sys_platform != 'win32' and python_version > '3.10'and python_version < '3.12' # (Jammy)
-gevent==24.2.1 ; sys_platform != 'win32' and python_version >= '3.12'  # (Noble)
-greenlet==0.4.15 ; sys_platform != 'win32' and python_version == '3.7'
-greenlet==0.4.17 ; sys_platform != 'win32' and python_version > '3.7' and python_version <= '3.9'
-greenlet==1.1.2 ; sys_platform != 'win32' and python_version > '3.9' and python_version < '3.12' # (Jammy)
-greenlet==3.0.3 ; sys_platform != 'win32' and python_version >= '3.12'  # (Noble)
+gevent==1.1.2 ; sys_platform != 'win32' and python_version < '3.7'
+gevent==1.4.0 ; sys_platform == 'win32' and python_version < '3.7'
+gevent==1.5.0 ; python_version == '3.7'
+gevent==20.9.0 ; python_version > '3.7' and python_version <= '3.9'
+gevent==21.8.0 ; python_version > '3.9'  # (Jammy)
+greenlet==0.4.10 ; python_version < '3.7'
+greenlet==0.4.15 ; python_version == '3.7'
+greenlet==0.4.17 ; python_version > '3.7' and python_version <= '3.9'
+greenlet==1.1.2 ; python_version  > '3.9'  # (Jammy)
+html2text==2016.9.19
 idna==2.8
 Jinja2==2.11.3 ; python_version < '3.12' # min version = 2.10.1 (Focal - with security backports)
 Jinja2==3.1.2 ; python_version >= '3.12'  # (Noble) compatibility with markupsafe
