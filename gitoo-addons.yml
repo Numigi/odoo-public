@@ -1,5 +1,5 @@
 - url: https://github.com/oca/server-tools
-  branch: "16.0"
+  branch: "15.0"
   includes:
     - base_view_inheritance_extension
     - onchange_helper
