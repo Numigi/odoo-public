@@ -5,48 +5,50 @@ LABEL numigi <contact@numigi.com>
 ENV LANG C.UTF-8
 
 # Set the version of Odoo
-ENV ODOO_VERSION 16.0
-
+ENV ODOO_VERSION 18.0
 
 RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends \
-    build-essential \
-    ca-certificates \
-    curl \
-    dirmngr \
-    fonts-noto-cjk \
-    gcc \
-    git-core \
-    gnupg \
-    libldap2-dev \
-    liblz-dev \
-    libev-dev \
-    libpq-dev \
-    libsasl2-dev \
-    libssl-dev \
-    libxml2-dev \
-    libxslt1-dev \
-    node-less \
-    python3-dev \
-    npm \
-    python3-num2words \
-    python3-pdfminer \
-    python3-phonenumbers \
-    python3-pip \
-    python3-pyldap \
-    python3-qrcode \
-    python3-renderpm \
-    python3-setuptools \
-    python3-slugify \
-    python3-vobject \
-    python3-watchdog \
-    python3-xlrd \
-    python3-xlwt \
-    xz-utils \
-    && curl -o wkhtmltox.deb -sSL https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-3/wkhtmltox_0.12.6.1-3.bookworm_amd64.deb \
+        ca-certificates \
+        curl \
+        dirmngr \
+        fonts-noto-cjk \
+        gnupg \
+        libssl-dev \
+        node-less \
+        npm \
+        python3-magic \
+        python3-num2words \
+        python3-odf \
+        python3-pdfminer \
+        python3-pip \
+        python3-phonenumbers \
+        python3-pyldap \
+        python3-qrcode \
+        python3-renderpm \
+        python3-setuptools \
+        python3-slugify \
+        python3-vobject \
+        python3-watchdog \
+        python3-xlrd \
+        python3-xlwt \
+        xz-utils && \
+    if [ -z "${TARGETARCH}" ]; then \
+        TARGETARCH="$(dpkg --print-architecture)"; \
+    fi; \
+    WKHTMLTOPDF_ARCH=${TARGETARCH} && \
+    case ${TARGETARCH} in \
+    "amd64") WKHTMLTOPDF_ARCH=amd64 && WKHTMLTOPDF_SHA=967390a759707337b46d1c02452e2bb6b2dc6d59  ;; \
+    "arm64")  WKHTMLTOPDF_SHA=90f6e69896d51ef77339d3f3a20f8582bdf496cc  ;; \
+    "ppc64le" | "ppc64el") WKHTMLTOPDF_ARCH=ppc64el && WKHTMLTOPDF_SHA=5312d7d34a25b321282929df82e3574319aed25c  ;; \
+    esac \
+    && curl -o wkhtmltox.deb -sSL https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-3/wkhtmltox_0.12.6.1-3.jammy_${WKHTMLTOPDF_ARCH}.deb \
+    && echo ${WKHTMLTOPDF_SHA} wkhtmltox.deb | sha1sum -c - \
     && apt-get install -y --no-install-recommends ./wkhtmltox.deb \
     && rm -rf /var/lib/apt/lists/* wkhtmltox.deb
 
+    
 RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ bookworm-pgdg 16' > /etc/apt/sources.list.d/pgdg.list \
     && GNUPGHOME="$(mktemp -d)" \
     && export GNUPGHOME \
