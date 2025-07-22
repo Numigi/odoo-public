@@ -7,44 +7,35 @@ ENV LANG C.UTF-8
 # Set the version of Odoo
 ENV ODOO_VERSION 18.0
 
+# Install some deps, lessc and less-plugin-clean-css, and wkhtmltopdf
+
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends \
-    build-essential \
-    ca-certificates \
-    curl \
-    dirmngr \
-    fonts-noto-cjk \
-    gcc \
-    git-core \
-    gnupg \
-    libldap2-dev \
-    liblz-dev \
-    libev-dev \
-    libpq-dev \
-    libsasl2-dev \
-    libxml2-dev \
-    libxslt1-dev \
-    node-less \
-    python3-dev \
-    libssl-dev \
-    npm \
-    python3-magic \
-    python3-num2words \
-    python3-odf \
-    python3-pdfminer \
-    python3-pip \
-    python3-phonenumbers \
-    python3-pyldap \
-    python3-qrcode \
-    python3-renderpm \
-    python3-setuptools \
-    python3-slugify \
-    python3-vobject \
-    python3-watchdog \
-    python3-xlrd \
-    python3-xlwt \
-    xz-utils && \
+        ca-certificates \
+        curl \
+        dirmngr \
+        fonts-noto-cjk \
+        gnupg \
+        libssl-dev \
+        node-less \
+        npm \
+        python3-magic \
+        python3-num2words \
+        python3-odf \
+        python3-pdfminer \
+        python3-pip \
+        python3-phonenumbers \
+        python3-pyldap \
+        python3-qrcode \
+        python3-renderpm \
+        python3-setuptools \
+        python3-slugify \
+        python3-vobject \
+        python3-watchdog \
+        python3-xlrd \
+        python3-xlwt \
+        xz-utils && \
     if [ -z "${TARGETARCH}" ]; then \
         TARGETARCH="$(dpkg --print-architecture)"; \
     fi; \
@@ -73,10 +64,14 @@ RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ noble-pgdg main' > /etc/a
     && rm -f /etc/apt/sources.list.d/pgdg.list \
     && rm -rf /var/lib/apt/lists/*
 
+# Install rtlcss (on Debian buster)
 RUN npm install -g rtlcss
+
 
 RUN git config --global user.name "Odoo" && \
     git config --global user.email "root@localhost"
+
+RUN pip3 install Cython==0.29.24 pyyaml==6.0.2 setuptools==75.6.0
 
 COPY docker_files/odoo-requirements.txt docker_files/extra-requirements.txt /
 RUN pip3 install -r /odoo-requirements.txt -r extra-requirements.txt && \
