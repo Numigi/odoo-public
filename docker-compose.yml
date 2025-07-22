@@ -29,14 +29,14 @@ services:
       - odoo-db-data:/var/lib/postgresql/data/pgdata
     expose:
       - 5432
-  # gitoo:
-  #   image: quay.io/numigi/gitoo:1.7
-  #   volumes:
-  #     - .odoo-source-code:/mnt/odoo
-  #     - .extra-addons:/mnt/extra-addons
-  #     - ./gitoo.yml:/gitoo.yml
-  #     - ./gitoo-addons.yml:/gitoo-addons.yml
-  #     - ./patches:/patches
+  gitoo:
+    image: quay.io/numigi/gitoo:1.7
+    volumes:
+      - .odoo-source-code:/mnt/odoo
+      - .extra-addons:/mnt/extra-addons
+      - ./gitoo.yml:/gitoo.yml
+      - ./gitoo-addons.yml:/gitoo-addons.yml
+      - ./patches:/patches
 volumes:
   odoo-web-data:
   odoo-db-data:
