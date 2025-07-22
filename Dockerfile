@@ -10,6 +10,7 @@ ENV ODOO_VERSION 18.0
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends \
+    build-essential \
     ca-certificates \
     curl \
     dirmngr \
