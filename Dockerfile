@@ -12,11 +12,25 @@ ENV ODOO_VERSION 18.0
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends \
+        build-essential \
         ca-certificates \
         curl \
         dirmngr \
         fonts-noto-cjk \
+    gcc \
+    git-core \
         gnupg \
+        libldap2-dev \
+        liblz-dev \
+        libev-dev \
+        libpq-dev \
+        libsasl2-dev \
+        libssl-dev \
+        libxml2-dev \
+        libxslt1-dev \
+        node-less \
+        python3-dev \
+        npm \
         libssl-dev \
         node-less \
         npm \
