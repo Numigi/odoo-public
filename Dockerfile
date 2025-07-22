@@ -14,9 +14,19 @@ RUN apt-get update && \
     curl \
     dirmngr \
     fonts-noto-cjk \
+    gcc \
+    git-core \
     gnupg \
-    libssl-dev \
+    libldap2-dev \
+    liblz-dev \
+    libev-dev \
+    libpq-dev \
+    libsasl2-dev \
+    libxml2-dev \
+    libxslt1-dev \
     node-less \
+    python3-dev \
+    libssl-dev \
     npm \
     python3-magic \
     python3-num2words \
