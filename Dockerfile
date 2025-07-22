@@ -1,4 +1,4 @@
-FROM python:3.10-bookworm
+FROM python:3.12-bookworm
 LABEL numigi <contact@numigi.com>
 
 # Generate locale C.UTF-8 for postgres and general locale data
