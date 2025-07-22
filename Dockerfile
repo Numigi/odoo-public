@@ -1,4 +1,4 @@
-FROM python:3.12-bookworm
+FROM ubuntu:noble
 LABEL numigi <contact@numigi.com>
 
 # Generate locale C.UTF-8 for postgres and general locale data
