@@ -103,9 +103,9 @@ CMD ["odoo"]
 
 EXPOSE 8069 8071 8072
 
-# ENV ODOO_DIR /usr/local/lib/python3.10/site-packages
-# COPY .odoo-source-code ${ODOO_DIR}
-# COPY .extra-addons ${ODOO_DIR}/odoo/addons
+ENV ODOO_DIR /usr/local/lib/python3.10/site-packages
+COPY .odoo-source-code ${ODOO_DIR}
+COPY .extra-addons ${ODOO_DIR}/odoo/addons
 
 COPY --chown=odoo /docker_files/odoo-bin /bin/odoo
 RUN chmod +x /bin/odoo
