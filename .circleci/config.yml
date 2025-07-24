@@ -29,10 +29,10 @@ jobs:
        - run:
           name: Setup Log Folder For Reports
           command: sudo mkdir -p ./log && sudo chmod 777 ./log
-      #  - run:
-      #     <<: *gitoo_install_odoo
-      #  - run:
-      #     <<: *gitoo_install_extra_addons
+       - run:
+          <<: *gitoo_install_odoo
+       - run:
+          <<: *gitoo_install_extra_addons
        - run:
           name: Build -- Init Database
           command: docker-compose run --rm odoo odoo --stop-after-init -i main
