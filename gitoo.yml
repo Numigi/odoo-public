@@ -2,5 +2,5 @@
   branch: "18.0"
   commit: 17a1fc43d428bec4a8a821901518d3d5c793dd3d
   base: true
-  # patches:
-  #   - file: patches/enable-specific-conf.patch
+  patches:
+    - file: patches/enable-specific-conf.patch
