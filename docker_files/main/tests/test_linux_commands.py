@@ -2,10 +2,10 @@
 """
 import subprocess
 
-from odoo.tests import common
+from odoo.tests.common import TransactionCase
 
 
-class CommandLines(common.TransactionCase):
+class CommandLines(TransactionCase):
     """Test suite for command lines."""
 
     def test_gitoo(self):
