@@ -8,8 +8,8 @@ from odoo.tests.common import TransactionCase
 class CommandLines(TransactionCase):
     """Test suite for command lines."""
 
-    def test_gitoo(self):
-        """ gitoo is required"""
+    def test_demo(self):
+        """ gideoo is required"""
         self.assertEqual(1, 1)
         # self.assertIsNotNone(subprocess.call(["gitoo", "--version"]))
 
