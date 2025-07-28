@@ -1,7 +1,6 @@
 """Check that the linux command lines exists in the docker that will be pushed
 """
 import subprocess
-
 from odoo.tests.common import TransactionCase
 
 

@@ -1,8 +1,8 @@
 
-from odoo.tests import common
+from odoo.tests.common import TransactionCase
 
 
-class TestSpecificOdooRCFile(common.TransactionCase):
+class TestSpecificOdooRCFile(TransactionCase):
 
     def test_database_name_matches_name_in_specific_odoo_rc_file(self):
         """Test that the database name the one from the specific rc file given to Odoo.
