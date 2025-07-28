@@ -1,5 +1,5 @@
 - url: https://github.com/Numigi/odoo-base
-  branch: "16.0"
+  branch: "18.0"
   paths:
     - file: ./Dockerfile
       find: quay.io/numigi/odoo-public:%v

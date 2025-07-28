@@ -1,11 +1,10 @@
 """Check that the linux command lines exists in the docker that will be pushed
 """
 import subprocess
+from odoo.tests.common import TransactionCase
 
-from odoo.tests import common
 
-
-class CommandLines(common.TransactionCase):
+class CommandLines(TransactionCase):
     """Test suite for command lines."""
 
     def test_gitoo(self):

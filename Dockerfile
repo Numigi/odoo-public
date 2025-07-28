@@ -5,7 +5,7 @@ LABEL numigi <contact@numigi.com>
 ENV LANG C.UTF-8
 
 # Set the version of Odoo
-ENV ODOO_VERSION 16.0
+ENV ODOO_VERSION 18.0
 
 
 RUN apt-get update && \
@@ -65,7 +65,7 @@ RUN npm install -g rtlcss
 RUN git config --global user.name "Odoo" && \
     git config --global user.email "root@localhost"
 
-RUN pip3 install pip==24.3.1 Cython==0.29.24 pyyaml==6.0.2 setuptools==75.6.0
+RUN pip3 install pip==25.1.1 Cython==0.29.24 pyyaml==6.0.2 setuptools==75.6.0
 
 COPY docker_files/odoo-requirements.txt docker_files/extra-requirements.txt /
 RUN pip3 install -r /odoo-requirements.txt -r extra-requirements.txt && \
