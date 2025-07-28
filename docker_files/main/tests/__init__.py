@@ -4,4 +4,3 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 from . import test_linux_commands
-from . import test_specific_rc_file
