@@ -8,7 +8,7 @@
 pip>=25.1.1
 setuptools>=80.0.0
 wheel
-Cython==0.29.24
+Cython>=3.0.0
 
 # --- Dépendances directes d'Odoo 18 ---
 # La liste ci-dessous est celle fournie par Odoo, garantissant la compatibilité.
