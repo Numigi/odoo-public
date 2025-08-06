@@ -27,21 +27,9 @@ RUN apt-get update && \
     libxml2-dev \
     libxslt1-dev \
     node-less \
-    python3-dev \
     npm \
-    python3-num2words \
-    python3-pdfminer \
-    python3-phonenumbers \
+    python3-dev \
     python3-pip \
-    python3-pyldap \
-    python3-qrcode \
-    python3-renderpm \
-    python3-setuptools \
-    python3-slugify \
-    python3-vobject \
-    python3-watchdog \
-    python3-xlrd \
-    python3-xlwt \
     xz-utils \
     && curl -o wkhtmltox.deb -sSL https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-3/wkhtmltox_0.12.6.1-3.bookworm_amd64.deb \
     && apt-get install -y --no-install-recommends ./wkhtmltox.deb \
