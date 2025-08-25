@@ -35,7 +35,7 @@ RUN apt-get update && \
     && apt-get install -y --no-install-recommends ./wkhtmltox.deb \
     && rm -rf /var/lib/apt/lists/* wkhtmltox.deb
 
-RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ bookworm-pgdg 16' > /etc/apt/sources.list.d/pgdg.list \
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
     && GNUPGHOME="$(mktemp -d)" \
     && export GNUPGHOME \
     && repokey='B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8' \
