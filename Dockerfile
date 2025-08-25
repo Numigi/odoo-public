@@ -50,7 +50,8 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg ma
 
 RUN npm install -g rtlcss
 
-RUN git config --global user.name "Odoo" && \
+RUN psql --version && \
+    git config --global user.name "Odoo" && \
     git config --global user.email "root@localhost"
 
 COPY docker_files/odoo-requirements.txt docker_files/extra-requirements.txt /
