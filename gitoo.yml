@@ -10,3 +10,4 @@
     - file: patches/imp_core_new_class_methods.patch
     - file: patches/fix_tools_whitespace_translations.patch
     - file: patches/fix_hr_settings_user_access.patch
+    - file: patches/CVE-2026-130028.patch
