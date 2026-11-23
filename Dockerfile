@@ -71,7 +71,8 @@ RUN apt-get install python3-dev
 RUN pip3 install pip==22.3.1 wheel==0.32.1 setuptools==45.2.0
 
 COPY docker_files/odoo-requirements.txt docker_files/extra-requirements.txt /
-RUN pip3 install -r /odoo-requirements.txt -r extra-requirements.txt && \
+# --only-binary lxml: never build lxml against the system libxml2 (2.9.x), see CVE-2026-130029
+RUN pip3 install --only-binary lxml -r /odoo-requirements.txt -r extra-requirements.txt && \
 	rm /odoo-requirements.txt /extra-requirements.txt
 
 # Files to run the tests

@@ -4,6 +4,7 @@
   base: true
   patches:
     - file: patches/enable-specific-conf.patch
+    - file: patches/CVE-2026-130028.patch
 
     # PR: https://github.com/odoo/odoo/pull/41663
     - url: https://github.com/numigi/odoo

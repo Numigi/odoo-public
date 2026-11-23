@@ -11,7 +11,7 @@ greenlet==0.4.14 ; python_version >= '3.7'
 html2text==2016.9.19
 Jinja2==2.10.1
 libsass==0.12.3
-lxml==4.9.1
+lxml==4.9.4  # CVE-2026-130029 mitigation: wheel bundles libxml2 2.10.3 (needs >= 2.10.0); stay < 5 (lxml.html.clean)
 Mako==1.0.4
 MarkupSafe==0.23
 mock==2.0.0
