@@ -12,7 +12,7 @@ commands:
       - run:
           name: Gitoo install odoo source code
           command: ./gitoo-install-odoo.sh
-          no_output_timeout: 20m
+          no_output_timeout: 45m
 
   gitoo_install_extra_addons:
     steps:
