@@ -12,19 +12,21 @@ commands:
       - run:
           name: Gitoo install odoo source code
           command: ./gitoo-install-odoo.sh
-          no_output_timeout: 25m
+          no_output_timeout: 45m
 
   gitoo_install_extra_addons:
     steps:
       - run:
           name: Gitoo install extra addons
           command: ./gitoo-install-addons.sh
+          no_output_timeout: 45m
 
   deploy_docker_build:
     steps:
       - run:
           name: Docker build
           command: docker build --build-arg GIT_TOKEN=${GIT_TOKEN}  --rm --pull -t "${DOCKER_IMAGE_NAME}" .
+          no_output_timeout: 45m
 
   deploy_docker_push:
     steps:
