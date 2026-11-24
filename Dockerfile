@@ -54,8 +54,15 @@ RUN git config --global user.name "Odoo" && \
     git config --global user.email "root@localhost"
 
 COPY docker_files/odoo-requirements.txt docker_files/extra-requirements.txt /
-RUN pip3 install -r /odoo-requirements.txt -r extra-requirements.txt && \
-    rm /odoo-requirements.txt /extra-requirements.txt
+# setuptools >= 82 no longer ships pkg_resources, which the setup.py of some
+# pinned sdists still imports (e.g. cbor2==5.4.2). Constrain setuptools both for
+# the install and for the isolated build environments:
+# PIP_CONSTRAINT for pip < 25.3, PIP_BUILD_CONSTRAINT for pip >= 25.3.
+RUN echo "setuptools<82" > /tmp/build-constraints.txt && \
+    PIP_CONSTRAINT=/tmp/build-constraints.txt \
+    PIP_BUILD_CONSTRAINT=/tmp/build-constraints.txt \
+    pip3 install -r /odoo-requirements.txt -r extra-requirements.txt && \
+    rm /odoo-requirements.txt /extra-requirements.txt /tmp/build-constraints.txt
 
 # Files to run the tests
 # run_pytest to run the test with pytest-odoo
